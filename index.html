@@ -117,27 +117,23 @@
     }
     .acc-inner{padding:22px;}
 
-    /* location card */
+    /* location card stacked */
     .location-card{
       border:1px solid #eee;
       border-radius:12px;
-      padding:24px;
+      padding:0 0 24px;
       box-shadow:0 4px 12px rgba(0,0,0,.04);
+      text-align:left;
     }
-    .loc-flex{
-      display:grid;
-      grid-template-columns:120px 1fr;
-      gap:20px;
-      align-items:start;
-    }
-    .loc-photo{
-      width:120px;
-      height:120px;
+    .location-card img{
+      width:100%;
+      height:200px;
       object-fit:cover;
-      border-radius:12px;
+      border-radius:12px 12px 0 0;
     }
-    .loc-text h3{margin-bottom:4px;}
-    .loc-text p{margin-bottom:10px;}
+    .loc-body{padding:24px;}
+    .loc-body h3{margin-bottom:6px;}
+    .loc-body p{margin-bottom:10px;}
 
     .map-link,.menu-link{
       display:inline-flex;
@@ -153,14 +149,13 @@
       margin-top:8px;
     }
     .map-link:hover,.menu-link:hover{opacity:.9;}
-    .map-link i,.menu-link i{font-size:.9rem;}
 
     .important{
       background:#fff9e6;
       border-left:4px solid #ffcc00;
       padding:14px;
       border-radius:8px;
-      margin-top:16px;
+      margin-top:18px;
       font-size:.9rem;
     }
 
@@ -253,75 +248,67 @@
       <!-- Overview -->
       <div class="acc-item">
         <div class="acc-header">Event Overview</div>
-        <div class="acc-content">
-          <div class="acc-inner">
-            <ul>
-              <li><strong>4:30&nbsp;PM</strong> Clock out at State Farm Park Center</li>
-              <li><strong>4:30–4:45&nbsp;PM</strong> Retrieve cars & exit garage</li>
-              <li><strong>4:45–5:00&nbsp;PM</strong> Drive & park at Perimeter Place</li>
-              <li><strong>5:00&nbsp;PM</strong> Dinner at Culinary Dropout (under Jonathan)</li>
-              <li><strong>≈ 6:45&nbsp;PM</strong> Wrap-up; optional nearby drinks</li>
-            </ul>
-          </div>
-        </div>
+        <div class="acc-content"><div class="acc-inner">
+          <ul>
+            <li><strong>4:30&nbsp;PM</strong> Clock out at State Farm Park Center</li>
+            <li><strong>4:30–4:45&nbsp;PM</strong> Retrieve cars & exit garage</li>
+            <li><strong>4:45–5:00&nbsp;PM</strong> Drive & park at Perimeter Place</li>
+            <li><strong>5:00&nbsp;PM</strong> Dinner at Culinary Dropout (under Jonathan)</li>
+            <li><strong>≈ 6:45&nbsp;PM</strong> Wrap-up; optional nearby drinks</li>
+          </ul>
+        </div></div>
       </div>
 
       <!-- Dinner details -->
       <div class="acc-item">
         <div class="acc-header">Culinary Dropout Details</div>
-        <div class="acc-content">
-          <div class="acc-inner">
-            <div class="location-card">
-              <div class="loc-flex">
-                <img src="images/yelp-1.jpg" class="loc-photo" alt="Culinary Dropout booth">
-                <div class="loc-text">
-                  <h3>Culinary Dropout – Dunwoody</h3>
-                  <p>1231 Ashford Crossing, Building 900<br>Atlanta, GA 30346 • <a href="tel:+14702426712">(470) 242-6712</a></p>
-                  <p>Live-music gastropub serving upscale comfort food—pretzel & fondue, 36-hour ribs, fried chicken with honey.</p>
-                  <p><strong>Cost:</strong> Entrées $15–25 • Beer & cocktail specials</p>
+        <div class="acc-content"><div class="acc-inner">
+          <div class="location-card">
+            <img src="images/yelp-1.jpg" alt="Culinary Dropout booth">
+            <div class="loc-body">
+              <h3>Culinary Dropout – Dunwoody</h3>
+              <p>1231 Ashford Crossing, Building&nbsp;900<br>Atlanta, GA&nbsp;30346 • <a href="tel:+14702426712">(470) 242-6712</a></p>
+              <p>Live-music gastropub serving upscale comfort food — pretzel &amp; fondue, 36-hour ribs, fried chicken with honey.</p>
+              <p><strong>Cost:</strong> Entrées $15–25 • Beer & cocktail specials</p>
 
-                  <a class="map-link" href="https://maps.apple.com/?address=1231%20Ashford%20Crossing,%20Atlanta,%20GA%2030346" target="_blank">
-                    <i class="fas fa-location-dot"></i> Map
-                  </a>
-                  <a class="menu-link" href="https://www.culinarydropout.com/locations/culinary-dropout-atlanta-ashford/menus/main-menu-menu/" target="_blank">
-                    <i class="fas fa-utensils"></i> Menu
-                  </a>
+              <a class="map-link" href="https://maps.apple.com/?address=1231%20Ashford%20Crossing,%20Atlanta,%20GA%2030346" target="_blank">
+                <i class="fas fa-location-dot"></i> Map
+              </a>
+              <a class="menu-link" href="https://www.culinarydropout.com/locations/culinary-dropout-atlanta-ashford/menus/main-menu-menu/" target="_blank">
+                <i class="fas fa-utensils"></i> Menu
+              </a>
 
-                  <div class="important">Reservation at 5 PM — please arrive a few minutes early so we can be seated promptly.</div>
-                </div>
-              </div>
+              <div class="important">Reservation at 5 PM — please arrive a few minutes early so we can be seated promptly.</div>
             </div>
           </div>
-        </div>
+        </div></div>
       </div>
 
       <!-- RSVP -->
       <div class="acc-item">
         <div class="acc-header">RSVP</div>
-        <div class="acc-content">
-          <div class="acc-inner rsvp">
-            <form name="rsvp" netlify>
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input id="name" name="name" required>
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-              </div>
-              <div class="form-group">
-                <label for="attendance">Will you attend?</label>
-                <select id="attendance" name="attendance" required>
-                  <option value="">Select…</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                  <option value="maybe">Maybe</option>
-                </select>
-              </div>
-              <button type="submit">Submit RSVP</button>
-            </form>
-          </div>
-        </div>
+        <div class="acc-content"><div class="acc-inner rsvp">
+          <form name="rsvp" netlify>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="attendance">Will you attend?</label>
+              <select id="attendance" name="attendance" required>
+                <option value="">Select…</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="maybe">Maybe</option>
+              </select>
+            </div>
+            <button type="submit">Submit RSVP</button>
+          </form>
+        </div></div>
       </div>
     </div>
 
@@ -336,28 +323,29 @@
     document.querySelectorAll('.acc-header').forEach(h=>{
       h.addEventListener('click',()=>{
         h.classList.toggle('active');
-        const c = h.nextElementSibling;
-        c.style.maxHeight = h.classList.contains('active') ? c.scrollHeight + 'px' : '0';
+        const pane = h.nextElementSibling;
+        pane.style.maxHeight = h.classList.contains('active')
+          ? pane.scrollHeight + 'px'
+          : '0';
       });
     });
-    /* open first panel */
-    document.querySelector('.acc-header').click();
+    document.querySelector('.acc-header').click(); // open first
 
     /* countdown */
     const target = new Date('May 30, 2025 17:00:00').getTime();
     function tick(){
       const diff = Math.max(0, target - Date.now());
-      const s = Math.floor(diff / 1000);
-      const vals = [
-        Math.floor(s / 86400),
-        Math.floor(s % 86400 / 3600),
-        Math.floor(s % 3600 / 60),
-        s % 60
+      const s = Math.floor(diff/1000);
+      const v = [
+        Math.floor(s/86400),
+        Math.floor(s%86400/3600),
+        Math.floor(s%3600/60),
+        s%60
       ];
-      const lbl = ['Days','Hours','Minutes','Seconds'];
+      const lbl=['Days','Hours','Minutes','Seconds'];
       countdown.innerHTML = lbl.map((l,i)=>`
         <div class="cd-item">
-          <div class="cd-val">${String(vals[i]).padStart(2,'0')}</div>
+          <div class="cd-val">${String(v[i]).padStart(2,'0')}</div>
           <div class="cd-label">${l}</div>
         </div>`).join('');
     }
