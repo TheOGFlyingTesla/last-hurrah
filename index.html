@@ -1,275 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jonathan's Farewell Outing – May 30</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonathan's Farewell Outing • May 30, 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
-    :root{
-      --statefarm-red:#E31837;
-      --statefarm-dark:#B50E1F;
-      --light:#ffffff;
-      --dark:#222;
-      --gray:#f5f5f5;
+    :root {
+      --red: #e31837;
+      --dark-red: #b50e1f;
+      --white: #ffffff;
+      --light: #f7f7f7;
+      --charcoal: #1f1f1f;
+      --radius: 12px;
     }
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-    body{background:var(--gray);color:var(--dark);line-height:1.6;}
+    *,*:before,*:after{box-sizing:border-box;margin:0;padding:0;font-family:"Inter",sans-serif;}
+    body{
+      background:linear-gradient(180deg,#fafafa 0%,#ffffff 30%);
+      color:var(--charcoal);
+      scroll-behavior:smooth;
+      line-height:1.6;
+    }
+    /* NAV */
+    nav{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(255,255,255,0.85);
+      backdrop-filter:saturate(180%) blur(12px);
+      display:flex;justify-content:center;gap:32px;
+      padding:12px 16px;border-bottom:1px solid #e5e5e5;
+      transition:box-shadow .3s;
+    }
+    nav.scrolled{box-shadow:0 2px 8px rgba(0,0,0,.05);}  
+    nav a{color:var(--charcoal);text-decoration:none;font-weight:600;position:relative;}
+    nav a::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--red);transition:width .25s;}
+    nav a:hover::after{width:100%;}
+    /* HERO */
+    .hero{
+      height:55vh;min-height:340px;position:relative;display:flex;align-items:center;justify-content:center;color:var(--white);text-align:center;
+    }
+    .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.6);}  
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.4)0%,rgba(0,0,0,.6)100%);}  
+    .hero-content{position:relative;z-index:1;padding:0 24px;}
+    .hero h1{font-size:2.8rem;font-weight:700;letter-spacing:-.5px;}
+    .hero p{font-size:1.2rem;margin-top:8px;}
+    /* CONTAINER + SECTION */
+    .container{width:min(920px,90%);margin:40px auto;}
+    section{margin-bottom:64px;animation:fadeUp .7s ease both;}
+    @keyframes fadeUp{0%{opacity:0;transform:translateY(24px);}100%{opacity:1;transform:translateY(0);}}
 
-    .container{max-width:920px;margin:30px auto;padding:20px;background:var(--light);border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,.08);}
-    header{background:linear-gradient(135deg,var(--statefarm-red),var(--statefarm-dark));color:var(--light);padding:40px 20px;text-align:center;border-radius:10px;}
-    header h1{font-size:2.4rem;margin-bottom:10px;}
-    header p{font-size:1.2rem;}
+    /* CARDS */
+    .card{background:var(--white);border-radius:var(--radius);box-shadow:0 4px 14px rgba(0,0,0,.06);padding:24px;margin-top:24px;}
+    .location-header{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+    .icon-circle{width:52px;height:52px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.4rem;flex:none;}
 
-    .disclaimer{background:#fff4f4;border-left:4px solid var(--statefarm-red);padding:16px;margin:24px 0;border-radius:6px;font-size:.9rem;}
+    .card ul{margin-top:12px;list-style:disc inside;}
+    .important{background:#fff9e6;border-left:4px solid #ffd65c;padding:12px;border-radius:8px;margin-top:16px;font-size:.9rem;}
 
-    /* Accordion */
-    .accordion{border-radius:6px;overflow:hidden;}
-    .accordion-item{border-bottom:1px solid #e0e0e0;}
-    .accordion-header{background:var(--light);display:flex;justify-content:space-between;align-items:center;padding:16px 20px;font-weight:600;cursor:pointer;transition:background .3s;}
-    .accordion-header:hover{background:#fafafa;}
-    .accordion-header.active{background:linear-gradient(90deg,var(--statefarm-red),var(--statefarm-dark));color:var(--light);}
-    .accordion-content{max-height:0;overflow:hidden;transition:max-height .3s ease;background:var(--light);}
-    .accordion-inner{padding:20px;}
-
-    .location-card{margin:16px 0;padding:20px;border:1px solid #ececec;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:16px;}
-    .location-header{display:flex;gap:14px;align-items:center;}
-    .location-icon{width:48px;height:48px;border-radius:50%;background:var(--statefarm-red);color:var(--light);display:flex;align-items:center;justify-content:center;font-size:1.4rem;}
-    .location-image{width:100%;height:210px;object-fit:cover;border-radius:6px;}
-    .map-link,.menu-link{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,var(--statefarm-red),var(--statefarm-dark));color:var(--light);padding:10px 18px;border-radius:40px;text-decoration:none;font-weight:600;margin-top:12px;transition:transform .25s;}
-    .map-link:hover,.menu-link:hover{transform:translateY(-2px);}
-    .important-note{background:#fff9e6;border-left:4px solid #ffcc00;padding:14px;border-radius:6px;font-size:.9rem;}
-
-    /* Countdown */
-    .countdown-box{background:#fafafa;border:1px solid #ececec;border-radius:10px;padding:24px;text-align:center;margin:32px 0;}
-    .countdown-box h2{margin-bottom:16px;font-size:1.4rem;}
-    .countdown{display:flex;justify-content:center;gap:20px;}
-    .cd-item{display:flex;flex-direction:column;align-items:center;}
-    .cd-value{background:linear-gradient(135deg,var(--statefarm-red),var(--statefarm-dark));color:var(--light);width:64px;height:64px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:700;}
-    .cd-label{font-size:.8rem;margin-top:6px;}
+    /* COUNTDOWN */
+    .countdown-wrap{display:flex;justify-content:center;gap:24px;margin-top:24px;}
+    .cd{display:flex;flex-direction:column;align-items:center;gap:6px;}
+    .cd-val{width:70px;height:70px;border-radius:10px;background:linear-gradient(135deg,var(--red),var(--dark-red));color:#fff;font-size:1.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+    .cd-label{font-size:.75rem;text-transform:uppercase;letter-spacing:.5px;}
 
     /* RSVP */
-    .rsvp{margin:40px 0;padding:24px;border:1px solid #ececec;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,.05);}
-    .rsvp h2{text-align:center;font-size:1.4rem;margin-bottom:20px;}
-    .form-group{margin-bottom:18px;}
-    .form-group label{font-weight:600;margin-bottom:6px;display:block;}
-    .form-group input,.form-group select{width:100%;padding:12px;border:1px solid #d0d0d0;border-radius:6px;font-size:1rem;}
-    .submit-btn{background:linear-gradient(90deg,var(--statefarm-red),var(--statefarm-dark));color:var(--light);border:none;padding:12px 22px;border-radius:40px;font-size:1rem;font-weight:600;cursor:pointer;width:100%;max-width:280px;margin:0 auto;display:block;transition:transform .25s;}
-    .submit-btn:hover{transform:translateY(-2px);}
-    footer{text-align:center;font-size:.85rem;color:#666;margin-top:50px;padding-bottom:10px;}
-    @media(max-width:768px){
-      header h1{font-size:2rem;}
-    }
+    form{margin-top:28px;display:grid;gap:18px;}
+    label{font-weight:600;margin-bottom:4px;display:block;}
+    input,select{width:100%;padding:12px;border:1px solid #d7d7d7;border-radius:8px;}
+    button{background:linear-gradient(135deg,var(--red),var(--dark-red));color:#fff;border:none;padding:12px;border-radius:40px;font-weight:600;cursor:pointer;transition:transform .25s;}
+    button:hover{transform:translateY(-2px);}  
+
+    /* FOOTER */
+    footer{padding:40px 0 24px;text-align:center;color:#666;font-size:.85rem;}
+
+    /* MEDIA */
+    @media(max-width:640px){.hero h1{font-size:2rem;}nav{gap:18px;font-size:.9rem;}}
   </style>
 </head>
 <body>
+  <nav id="topNav">
+    <a href="#overview">Overview</a>
+    <a href="#dinner">Dinner</a>
+    <a href="#activity">Activity</a>
+    <a href="#rsvp">RSVP</a>
+  </nav>
+
+  <section class="hero">
+    <img src="images/hero.jpg" alt="Runway view at 57th Fighter Group" />
+    <div class="hero-content">
+      <h1>Jonathan's Farewell Outing</h1>
+      <p>Friday • May 30 • Atlanta, GA</p>
+    </div>
+  </section>
+
   <div class="container">
-    <header>
-      <h1>Jonathan's Farewell Outing ✈️</h1>
-      <p>Friday • May 30, 2025</p>
-    </header>
 
-    <div class="disclaimer">
-      <strong>Note:</strong> This event is an independent social gathering of coworkers, not an official State Farm function. The team will carry on the tradition after Jonathan's departure.
-    </div>
+    <!-- Overview -->
+    <section id="overview">
+      <h2>Event Overview</h2>
+      <div class="card">
+        <p>We leave State Farm Park Center at <strong>4:30 PM</strong>, enjoy dinner with runway views at <strong>5:45 PM</strong>, then tackle tech‑driven challenges at Activate Games around <strong>7:30 PM</strong> (75‑minute session). Official wrap‑up by 9 PM—stay longer if you like.</p>
+        <ul>
+          <li>This is a personal farewell—but the outings continue after Jonathan.</li>
+          <li>Drive yourself; add extra traffic buffer if needed.</li>
+        </ul>
+      </div>
+      <div class="countdown-wrap" id="countdown"></div>
+    </section>
 
-    <div class="accordion">
-      <!-- Overview -->
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <span>Event Overview</span><i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-content">
-          <div class="accordion-inner">
-            <p>Celebrate Jonathan's next chapter with dinner overlooking the runway and an action‑packed group gaming session.</p><br>
-            <p><strong>Schedule:</strong></p>
-            <ul>
-              <li><strong>4:30 PM</strong> – Leave State Farm Park Center (Perimeter) after work</li>
-              <li><strong>≈ 5:45 PM</strong> – Dinner at 57th Fighter Group Restaurant</li>
-              <li><strong>≈ 7:30 PM</strong> – Activate Games session (75 min)</li>
-              <li><strong>~9:00 PM</strong> – Official wrap‑up (feel free to stay longer)</li>
-            </ul>
-            <p><strong>RSVP:</strong> Please submit the form below so we can confirm numbers.</p>
+    <!-- Dinner -->
+    <section id="dinner">
+      <h2>Dinner • 57th Fighter Group Restaurant</h2>
+      <div class="card">
+        <div class="location-header">
+          <div class="icon-circle"><i class="fas fa-utensils"></i></div>
+          <div>
+            <strong>3829 Clairmont Rd, Atlanta 30341</strong><br />
+            (770) 234‑0057 • Entrées $18‑38
           </div>
         </div>
+        <p>WWII‑themed American fare with panoramic runway views. Crowd favorites include beer‑cheese soup, brisket sliders, and NY strip.</p>
+        <div class="important">They will not seat us until the entire party is present—please arrive on time.</div>
+        <a class="map-link" href="https://maps.apple.com/?address=3829%20Clairmont%20Rd,%20Atlanta,%20GA%2030341" target="_blank"><i class="fas fa-map"></i> Open Map</a>
+        <a class="menu-link" href="https://57threstaurant.com" target="_blank"><i class="fas fa-list"></i> Menu</a>
       </div>
+    </section>
 
-      <!-- Dinner -->
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <span>Dinner • 57th Fighter Group Restaurant</span><i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-content">
-          <div class="accordion-inner">
-            <div class="location-card">
-              <div class="location-header">
-                <div class="location-icon"><i class="fas fa-utensils"></i></div>
-                <div>
-                  <h2>57th Fighter Group Restaurant</h2>
-                  <p>WWII‑themed American fare with runway views</p>
-                </div>
-              </div>
-              <img src="https://source.unsplash.com/featured/?airplane,restaurant" alt="57th Fighter Group" class="location-image">
-              <p><i class="fas fa-map-marker-alt"></i> 3829 Clairmont Rd, Atlanta, GA 30341</p>
-              <p><i class="fas fa-phone"></i> (770) 234‑0057</p>
-              <p><i class="fas fa-dollar-sign"></i> Entrées $18‑$38 • Plan ~$35 + tax/tip per person</p>
-              <a class="map-link" href="https://maps.apple.com/?address=3829%20Clairmont%20Rd,%20Atlanta,%20GA%2030341" target="_blank"><i class="fas fa-map"></i> Open in Maps</a>
-              <a class="menu-link" href="https://57threstaurant.com" target="_blank"><i class="fas fa-list"></i> View Menu</a>
-              <div class="important-note">
-                They will not seat the group until <em>everyone</em> has arrived. Aim for 5:45 PM sharp.
-              </div>
-            </div>
+    <!-- Activity -->
+    <section id="activity">
+      <h2>Activity • Activate Games</h2>
+      <div class="card">
+        <div class="location-header">
+          <div class="icon-circle"><i class="fas fa-gamepad"></i></div>
+          <div>
+            <strong>4540 Roswell Rd Suite A, Atlanta 30342</strong><br />
+            (404) 891‑9126 • $24.99 weekday session
           </div>
         </div>
+        <p>High‑tech rooms blending physical and mental puzzles. Wristbands track scores across rapid‑fire 1‑3 minute challenges—perfect for friendly competition.</p>
+        <a class="map-link" href="https://maps.apple.com/?address=4540%20Roswell%20Rd,%20Atlanta,%20GA%2030342" target="_blank"><i class="fas fa-map"></i> Open Map</a>
+        <a class="menu-link" href="https://playactivate.com" target="_blank"><i class="fas fa-external-link-alt"></i> Website</a>
       </div>
+    </section>
 
-      <!-- Activity -->
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <span>Activity • Activate Games</span><i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="accordion-content">
-          <div class="accordion-inner">
-            <div class="location-card">
-              <div class="location-header">
-                <div class="location-icon"><i class="fas fa-gamepad"></i></div>
-                <div>
-                  <h2>Activate Games</h2>
-                  <p>High‑tech physical & mental challenges</p>
-                </div>
-              </div>
-              <img src="https://source.unsplash.com/featured/?neon,games" alt="Activate Games" class="location-image">
-              <p><i class="fas fa-map-marker-alt"></i> 4540 Roswell Rd Suite A, Atlanta, GA 30342</p>
-              <p><i class="fas fa-phone"></i> (404) 891‑9126</p>
-              <p><i class="fas fa-dollar-sign"></i> $24.99 per person (weekday pricing)</p>
-              <a class="map-link" href="https://maps.apple.com/?address=4540%20Roswell%20Rd,%20Atlanta,%20GA%2030342" target="_blank"><i class="fas fa-map"></i> Open in Maps</a>
-              <a class="menu-link" href="https://playactivate.com" target="_blank"><i class="fas fa-external-link-alt"></i> Website</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="countdown-box">
-      <h2>Countdown to the Event</h2>
-      <div class="countdown">
-        <div class="cd-item">
-          <div class="cd-value" id="days">--</div>
-          <div class="cd-label">Days</div>
-        </div>
-        <div class="cd-item">
-          <div class="cd-value" id="hours">--</div>
-          <div class="cd-label">Hours</div>
-        </div>
-        <div class="cd-item">
-          <div class="cd-value" id="minutes">--</div>
-          <div class="cd-label">Minutes</div>
-        </div>
-        <div class="cd-item">
-          <div class="cd-value" id="seconds">--</div>
-          <div class="cd-label">Seconds</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="rsvp">
+    <!-- RSVP -->
+    <section id="rsvp">
       <h2>RSVP</h2>
-      <form id="rsvpForm">
-        <div class="form-group">
-          <label for="name">Your Name *</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Email *</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="attending">Will you be attending? *</label>
-          <select id="attending" name="attending" required>
-            <option value="" disabled selected>Select an option</option>
-            <option value="yes">Yes, I'll be there!</option>
-            <option value="dinner">Dinner only</option>
-            <option value="games">Games only</option>
-            <option value="no">Can't make it</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="dietary">Any dietary restrictions?</label>
-          <input type="text" id="dietary" name="dietary" placeholder="Vegetarian, allergies, etc.">
-        </div>
-        <button type="submit" class="submit-btn">Submit RSVP</button>
-      </form>
-    </div>
+      <div class="card">
+        <form name="rsvp" netlify>
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div>
+            <label for="attendance">Will you attend?</label>
+            <select id="attendance" name="attendance" required>
+              <option value="">Select…</option>
+              <option value="yes">Yes, I'll be there</option>
+              <option value="no">Can't make it</option>
+              <option value="maybe">Maybe</option>
+            </select>
+          </div>
+          <button type="submit">Submit RSVP</button>
+        </form>
+      </div>
+    </section>
 
-    <footer>
-      <p>Created with ❤️ for Jonathan's Farewell • Last updated: May 2025</p>
-    </footer>
   </div>
 
+  <footer>
+    © 2025 Farewell Outing • Not affiliated with State Farm
+  </footer>
+
   <script>
-    // Countdown Timer
-    function updateCountdown() {
-      const eventDate = new Date('May 30, 2025 16:30:00').getTime();
-      const now = new Date().getTime();
-      const distance = eventDate - now;
+    // Sticky nav shadow
+    const nav=document.getElementById("topNav");
+    window.addEventListener("scroll",()=>{nav.classList.toggle("scrolled",window.scrollY>10);});
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById('days').textContent = days;
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-      if (distance < 0) {
-        clearInterval(countdown);
-        document.querySelector('.countdown').innerHTML = '<div style="font-size: 1.5rem; font-weight: 600;">The event is happening now! 🎉</div>';
-      }
-    }
-
-
-    // Initialize countdown
-    updateCountdown();
-    const countdown = setInterval(updateCountdown, 1000);
-
-    // Accordion functionality
-    document.querySelectorAll('.accordion-header').forEach(header => {
-      header.addEventListener('click', () => {
-        const item = header.parentNode;
-        const content = header.nextElementSibling;
-        const isOpen = header.classList.contains('active');
-        
-        // Close all items
-        document.querySelectorAll('.accordion-item').forEach(accItem => {
-          accItem.querySelector('.accordion-header').classList.remove('active');
-          accItem.querySelector('.accordion-content').style.maxHeight = '0';
-          accItem.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
-        });
-        
-        // Open clicked item if it was closed
-        if (!isOpen) {
-          header.classList.add('active');
-          content.style.maxHeight = content.scrollHeight + 'px';
-          header.querySelector('.fa-chevron-down').style.transform = 'rotate(180deg)';
-        }
+    // Smooth scroll offset (for fixed nav)
+    document.querySelectorAll("nav a").forEach(link=>{
+      link.addEventListener("click",e=>{
+        e.preventDefault();
+        const id=link.getAttribute("href").substring(1);
+        const target=document.getElementById(id);
+        const offset=nav.offsetHeight+8;
+        window.scrollTo({top:target.offsetTop-offset,behavior:"smooth"});
       });
     });
 
-    // Open first accordion by default
-    document.querySelector('.accordion-header').click();
-
-    // Form submission
-    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // Here you would typically send the form data to a server
-      alert('Thank you for your RSVP! We look forward to seeing you at the event.');
-      this.reset();
+    // Countdown
+    const cdWrap=document.getElementById("countdown");
+    ["Days","Hours","Minutes","Seconds"].forEach(l=>{
+      const div=document.createElement("div");
+      div.className="cd";
+      div.innerHTML=`<div class="cd-val" id="cd${l}">00</div><div class="cd-label">${l}</div>`;
+      cdWrap.appendChild(div);
     });
+    const countTo=new Date("May 30, 2025 17:30:00").getTime();
+    function updateCD(){
+      const now=Date.now();
+      let diff=countTo-now;if(diff<0)diff=0;
+      const d=Math.floor(diff/86400000);
+      const h=Math.floor((diff%86400000)/3600000);
+      const m=Math.floor((diff%3600000)/60000);
+      const s=Math.floor((diff%60000)/1000);
+      cdDays.textContent=d.toString().padStart(2,"0");
+      cdHours.textContent=h.toString().padStart(2,"0");
+      cdMinutes.textContent=m.toString().padStart(2,"0");
+      cdSeconds.textContent=s.toString().padStart(2,"0");
+    }
+    updateCD();setInterval(updateCD,1000);
   </script>
 </body>
 </html>
